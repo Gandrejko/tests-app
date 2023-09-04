@@ -10,15 +10,6 @@ const QuestionSchema: Schema = new Schema({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-  },
-  options: {
-    type: Array<{
-      name: string,
-      isCorrect: boolean,
-    }>,
-  }
 });
 
 export const QuestionModel = model<Question>('questions', QuestionSchema);
