@@ -21,7 +21,6 @@ export class TestService {
   }
 
   public async updateTest(testId: string, testData: Test): Promise<Test> {
-    console.log(testData)
     const updateTestById: Test = await TestModel.findByIdAndUpdate(testId, { testData }, { new: true });
     if (!updateTestById) throw new HttpException(409, "Test doesn't exist");
 
