@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express from 'express';
 import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
@@ -11,6 +12,7 @@ export class App {
     this.port = 3000;
 
     this.connectToDatabase();
+    this.initializeMiddlewares();
     this.initializeRoutes(routes);
   }
 
@@ -26,6 +28,11 @@ export class App {
 
   private async connectToDatabase() {
     await dbConnection();
+  }
+
+  private initializeMiddlewares() {
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
   }
 
   private initializeRoutes(routes: Routes[]) {

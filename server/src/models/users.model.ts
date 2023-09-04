@@ -1,8 +1,8 @@
-import { model, Schema, Document } from 'mongoose';
-import { User } from '@interfaces/users.interface';
+import { User } from "@interfaces/users.interface";
+import { model, Schema } from 'mongoose';
 
 const UserSchema: Schema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
     unique: true,
@@ -13,4 +13,4 @@ const UserSchema: Schema = new Schema({
   },
 });
 
-export const UserModel = model<User & Document>('User', UserSchema);
+export const UserModel = model<User>('users', UserSchema);

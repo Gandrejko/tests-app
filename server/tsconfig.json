@@ -25,14 +25,11 @@
       "@config": ["config"],
       "@controllers/*": ["controllers/*"],
       "@database": ["database"],
-      "@dtos/*": ["dtos/*"],
       "@exceptions/*": ["exceptions/*"],
       "@interfaces/*": ["interfaces/*"],
-      "@middlewares/*": ["middlewares/*"],
       "@models/*": ["models/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
