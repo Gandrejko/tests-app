@@ -13,6 +13,21 @@ const TestSchema: Schema = new Schema({
   description: {
     type: String,
   },
+  questions: [{
+    name: {
+      type: String,
+      required: true,
+    },
+    options: [{
+      name: {
+        type: String,
+        required: true,
+      },
+      isCorrect: {
+        type: Boolean,
+      }
+    }]
+  }]
 });
 
 export const TestModel = model<Test>('tests', TestSchema);
