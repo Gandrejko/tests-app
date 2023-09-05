@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Box, Button, IconButton, Popover, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 
 import * as styles from "./Header.styles";
@@ -10,6 +10,7 @@ type HeaderProps = {
 };
 
 export const Header: FC<HeaderProps> = ({ pageName }) => {
+  const navigate = useNavigate();
   const isLogin = true;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -52,29 +53,21 @@ export const Header: FC<HeaderProps> = ({ pageName }) => {
         <Box sx={styles.buttons}>
           {isLogin ? (
             <>
-              <Link to="/">
-                <Button sx={styles.button}>
-                  My Tests
-                </Button>
-              </Link>
-              <Link to="/login">
-                <Button sx={styles.button}>
-                  Log Out
-                </Button>
-              </Link>
+              <Button sx={styles.button} onClick={() => navigate("/user-tests")}>
+                My Tests
+              </Button>
+              <Button sx={styles.button} onClick={() => navigate("/login")}>
+                Log Out
+              </Button>
             </>
           ) : (
             <>
-              <Link to="/login">
-                <Button sx={styles.button}>
-                  Login
-                </Button>
-              </Link>
-              <Link to="/register">
-                <Button sx={styles.button}>
-                  Register
-                </Button>
-              </Link>
+              <Button sx={styles.button} onClick={() => navigate("/login")}>
+                Login
+              </Button>
+              <Button sx={styles.button} onClick={() => navigate("/register")}>
+                Register
+              </Button>
             </>
           )}
         </Box>

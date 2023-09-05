@@ -1,3 +1,4 @@
+import { UserTestsPage } from "pages/user-tests-page/UserTestsPage";
 import React from "react";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -15,6 +16,7 @@ function App() {
          <Route path="/" element={<MainPage />} />
          <Route path="/login" element={<LoginPage />} />
          <Route path="/register" element={<RegisterPage />} />
+         <Route path="/user-tests" element={<UserTestsPage />} />
 
          <Route path="*" element={<Navigate to="/" />} />
        </Routes>

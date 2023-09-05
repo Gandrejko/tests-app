@@ -1,13 +1,13 @@
+import { UserTestCard } from "components/user-test-card/UserTestCard";
 import React, { FC } from 'react';
 import { Box } from "@mui/material";
 import { useQuery } from "react-query";
 import { getAllTests } from 'api/tests-api';
-import { TestsList } from "components/tests-list/TestsList";
 import { Layout } from "components/layout/Layout";
 
-import * as styles from './UserTests.styles';
+import * as styles from './UserTestsPage.styles';
 
-export const UserTests: FC = () => {
+export const UserTestsPage: FC = () => {
   const {data: tests, isSuccess} = useQuery({
     queryFn: () => getAllTests(),
     queryKey: ['tests'],
@@ -16,7 +16,7 @@ export const UserTests: FC = () => {
   return (
     <Layout pageName="Tests" >
       <Box sx={styles.userTests}>
-        {isSuccess && <TestsList tests={tests} />}
+        {isSuccess && tests?.map((test) => <UserTestCard test={test} />)}
       </Box>
     </Layout>
   );
