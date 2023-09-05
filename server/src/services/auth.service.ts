@@ -7,10 +7,9 @@ import { sign } from "jsonwebtoken";
 import { Service } from "typedi";
 
 const createToken = (user: User): string => {
-  const dataStoredInToken = { username: user.username };
-  const expiresIn: number = 60 * 60;
+  const dataStoredInToken = { id: user._id, username: user.username };
 
-  return sign(dataStoredInToken, SECRET_KEY, { expiresIn });
+  return sign(dataStoredInToken, SECRET_KEY, { expiresIn: "24h" });
 }
 
 @Service()

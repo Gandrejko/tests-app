@@ -13,6 +13,7 @@ export class TestRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.test.getAllTests);
+    this.router.get(`${this.path}/user-tests`, this.test.getUserTests);
     this.router.get(`${this.path}/:id`, this.test.getTestById);
     this.router.post(`${this.path}`, this.test.createTest);
     this.router.put(`${this.path}/:id`, this.test.updateTest);

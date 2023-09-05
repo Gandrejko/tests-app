@@ -9,6 +9,10 @@ export class TestService {
     return TestModel.find().select('-questions');
   }
 
+  public async getUserTests(userId: string): Promise<Test[]> {
+    return TestModel.find({ creatorId: userId }).select('-questions');
+  }
+
   public async getTestById(testId: string): Promise<Test> {
     const test: Test = await TestModel.findOne({ _id: testId });
     if (!test) throw new HttpException(409, "Test doesn't exist");

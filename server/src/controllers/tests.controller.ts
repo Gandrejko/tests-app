@@ -1,14 +1,33 @@
+import { SECRET_KEY } from "@config";
 import { Test } from "@interfaces/tests.interface";
 import { TestService } from "@services/tests.service";
 import { NextFunction, Request, Response } from 'express';
 import { Container } from "typedi";
+import jwt_decode from "jwt-decode";
 
+export interface DataStoredInToken {
+  id: string;
+  username: string;
+}
 export class TestController {
   public test = Container.get(TestService);
 
   public getAllTests = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const tests: Test[] = await this.test.getAllTests();
+
+      res.status(200).json(tests);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public getUserTests = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const token = req.headers.authorization?.split(' ')[1];
+      const { id }: DataStoredInToken = jwt_decode(token);
+
+      const tests: Test[] = await this.test.getUserTests(id);
 
       res.status(200).json(tests);
     } catch (error) {
