@@ -12,7 +12,7 @@ export const LoginPage: FC = () => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const {mutate, isSuccess, data: token} = useMutation({
+  const {mutate} = useMutation({
     mutationFn: login,
     onSuccess: () => {
       navigate('/tests');

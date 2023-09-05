@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { PORT } from "@config";
+import { DB_URL, PORT } from "@config";
 import express from 'express';
-import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
 import cors from 'cors';
+import { connect, ConnectOptions } from "mongoose";
 
 export class App {
   public app: express.Application;
@@ -24,12 +24,11 @@ export class App {
     });
   }
 
-  public getServer() {
-    return this.app;
-  }
-
   private async connectToDatabase() {
-    await dbConnection();
+    await connect(DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    } as ConnectOptions);
   }
 
   private initializeMiddlewares() {

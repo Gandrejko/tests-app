@@ -9,9 +9,9 @@ export class AuthController {
   public signUp = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: User = req.body;
-      const token = await this.auth.signup(userData);
+      const data = await this.auth.signup(userData);
 
-      res.status(201).json(token);
+      res.status(201).json(data);
     } catch (error) {
       next(error);
     }
@@ -20,9 +20,9 @@ export class AuthController {
   public login = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: User = req.body;
-      const token = await this.auth.login(userData);
+      const data = await this.auth.login(userData);
 
-      res.status(200).json(token);
+      res.status(200).json(data);
     } catch (error) {
       next(error);
     }

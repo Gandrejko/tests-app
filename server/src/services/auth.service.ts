@@ -15,22 +15,22 @@ const createToken = (user: User): string => {
 
 @Service()
 export class AuthService {
-  public async signup(userData: User): Promise<string> {
+  public async signup(userData: User): Promise<{user: User, token: string}> {
     const findUser: User = await UserModel.findOne({ username: userData.username });
     if (findUser) throw new HttpException(409, `User with username ${userData.username} already exists`);
 
     const hashedPassword = await hash(userData.password, 10);
     const createUserData = await UserModel.create({ ...userData, password: hashedPassword });
-    return createToken(createUserData);
+    return { user: createUserData, token: createToken(createUserData) };
   }
 
-  public async login(userData: User): Promise<string> {
+  public async login(userData: User): Promise<{user: User, token: string}> {
     const findUser: User = await UserModel.findOne({ username: userData.username });
     if (!findUser) throw new HttpException(409, `User with username ${userData.username} was not found`);
 
     const isPasswordMatching: boolean = await compare(userData.password, findUser.password);
     if (!isPasswordMatching) throw new HttpException(409, "Password is not matching");
 
-    return createToken(findUser);
+    return { user: findUser, token: createToken(findUser) };
   }
 }

@@ -12,7 +12,7 @@ export const RegisterPage: FC = () => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const {mutate, isSuccess, data: token} = useMutation({
+  const {mutate} = useMutation({
     mutationFn: register,
     onSuccess: () => {
       navigate('/tests');
