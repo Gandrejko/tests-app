@@ -21,7 +21,6 @@ export class AuthService {
 
     const hashedPassword = await hash(userData.password, 10);
     const createUserData = await UserModel.create({ ...userData, password: hashedPassword });
-
     return createToken(createUserData);
   }
 

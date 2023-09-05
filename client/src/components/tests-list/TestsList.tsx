@@ -12,7 +12,7 @@ type TestsListProps = {
 export const TestsList: FC<TestsListProps> = ({ tests }) => {
   return (
     <Box sx={styles.testsList}>
-      {tests.map((test) => <TestCard key={test.id} test={test} />)}
+      {tests.map((test) => <TestCard test={test} />)}
     </Box>
   );
 };

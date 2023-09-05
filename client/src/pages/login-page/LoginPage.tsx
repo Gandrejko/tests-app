@@ -1,17 +1,30 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useMutation } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../api/auth-api";
 import { AppInput } from "../../components/app-input/AppInput";
 
 import * as styles from './LoginPage.styles';
 
 export const LoginPage: FC = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
+  const {mutate, isSuccess, data: token} = useMutation({
+    mutationFn: login,
+  })
+
+  useEffect(() => {
+    if (isSuccess) {
+      localStorage.setItem('token', token);
+      navigate('/');
+    }
+  }, [isSuccess, token]);
+
   const handleRegisterClick = () => {
-    // Логіка для реєстрації користувача
-    // Ви можете викликати API для реєстрації тут
+    mutate({ username, password });
   };
   return (
     <Box sx={styles.loginPage}>
