@@ -6,7 +6,7 @@ import { Service } from "typedi";
 @Service()
 export class TestService {
   public async getAllTests(): Promise<Test[]> {
-    return TestModel.find();
+    return TestModel.find().select('-questions');
   }
 
   public async getTestById(testId: string): Promise<Test> {
