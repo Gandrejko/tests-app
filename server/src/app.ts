@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { PORT } from "@config";
 import express from 'express';
 import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
@@ -10,7 +11,7 @@ export class App {
 
   constructor(routes: Routes[]) {
     this.app = express();
-    this.port = 3000;
+    this.port = PORT;
 
     this.connectToDatabase();
     this.initializeMiddlewares();

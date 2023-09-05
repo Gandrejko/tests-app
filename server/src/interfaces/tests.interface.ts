@@ -12,4 +12,5 @@ export interface Test {
   name: string;
   description: string;
   questions: Question[];
+  creatorId: string;
 }

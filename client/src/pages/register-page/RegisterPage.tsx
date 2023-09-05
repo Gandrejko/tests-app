@@ -23,6 +23,7 @@ export const RegisterPage: FC = () => {
           fullWidth
           value={username}
           onChange={(event) => setUsername(event.target.value)}
+          required
         />
         <AppInput
           placeholder="Password"
@@ -30,6 +31,7 @@ export const RegisterPage: FC = () => {
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          required
         />
         <Button
           variant="contained"
