@@ -10,7 +10,7 @@ type HeaderProps = {
 };
 
 export const Header: FC<HeaderProps> = ({ pageName }) => {
-  const isLogin = false;
+  const isLogin = true;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleIconClick = (event: React.MouseEvent<HTMLElement>) => {

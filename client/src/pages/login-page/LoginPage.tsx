@@ -2,8 +2,8 @@ import React, { FC, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useMutation } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../api/auth-api";
-import { AppInput } from "../../components/app-input/AppInput";
+import { login } from "api/auth-api";
+import { AppInput } from "components/app-input/AppInput";
 
 import * as styles from './LoginPage.styles';
 

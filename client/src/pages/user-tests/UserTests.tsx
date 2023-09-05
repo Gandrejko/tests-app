@@ -5,9 +5,9 @@ import { getAllTests } from 'api/tests-api';
 import { TestsList } from "components/tests-list/TestsList";
 import { Layout } from "components/layout/Layout";
 
-import * as styles from './MainPage.styles';
+import * as styles from './UserTests.styles';
 
-export const MainPage: FC = () => {
+export const UserTests: FC = () => {
   const {data: tests, isSuccess} = useQuery({
     queryFn: () => getAllTests(),
     queryKey: ['tests'],
@@ -15,7 +15,7 @@ export const MainPage: FC = () => {
 
   return (
     <Layout pageName="Tests" >
-      <Box sx={styles.mainPage}>
+      <Box sx={styles.userTests}>
         {isSuccess && <TestsList tests={tests} />}
       </Box>
     </Layout>

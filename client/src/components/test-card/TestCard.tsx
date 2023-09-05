@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import React, { FC } from "react";
-import { Test } from "../../types/tests";
+import { Test } from "types/tests";
 
 import * as styles from "./TestCard.styles";
 

@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../../api/auth-api";
-import { AppInput } from "../../components/app-input/AppInput";
+import { register } from "api/auth-api";
 
 import * as styles from './RegisterPage.styles';
 import { useMutation } from "react-query";
+import { AppInput } from "components/app-input/AppInput";
 
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();

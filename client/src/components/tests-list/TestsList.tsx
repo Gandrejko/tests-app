@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React, { FC } from "react";
 import { TestCard } from "../test-card/TestCard";
-import { Test } from "../../types/tests";
+import { Test } from "types/tests";
 
 import * as styles from "./TestsList.styles";
 

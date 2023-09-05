@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { FC, ReactNode } from "react";
-import { Header } from "../header/Header";
+import { Header } from "components/header/Header";
 
 import * as styles from './Layout.styles';
 
