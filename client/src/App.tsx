@@ -7,8 +7,8 @@ import { LoginPage } from "pages/login-page/LoginPage";
 import { MainPage } from "pages/main-page/MainPage";
 import { RegisterPage } from "pages/register-page/RegisterPage";
 
+const queryClient = new QueryClient();
 function App() {
-  const queryClient = new QueryClient();
   return (
    <BrowserRouter>
      <QueryClientProvider client={queryClient}>

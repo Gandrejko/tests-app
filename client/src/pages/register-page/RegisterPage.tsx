@@ -14,14 +14,10 @@ export const RegisterPage: FC = () => {
 
   const {mutate, isSuccess, data: token} = useMutation({
     mutationFn: register,
-  });
-
-  useEffect(() => {
-    if (isSuccess) {
-      localStorage.setItem('token', token);
-      navigate('/');
+    onSuccess: () => {
+      navigate('/tests');
     }
-  }, [isSuccess, token]);
+  });
 
   const handleRegisterClick = () => {
     mutate({ username, password })
