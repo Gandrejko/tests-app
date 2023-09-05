@@ -1,6 +1,6 @@
 import { UserTestCard } from "components/user-test-card/UserTestCard";
 import React, { FC } from 'react';
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useQuery } from "react-query";
 import { getAllTests } from 'api/tests-api';
 import { Layout } from "components/layout/Layout";
@@ -14,8 +14,9 @@ export const UserTestsPage: FC = () => {
   });
 
   return (
-    <Layout pageName="Tests" >
+    <Layout pageName="My tests" >
       <Box sx={styles.userTests}>
+        <Button variant="contained" size="large" sx={styles.createTest}>Create test</Button>
         {isSuccess && tests?.map((test) => <UserTestCard test={test} />)}
       </Box>
     </Layout>
