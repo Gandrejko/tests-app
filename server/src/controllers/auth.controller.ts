@@ -11,11 +11,7 @@ export class AuthController {
       const userData: User = req.body;
       const token = await this.auth.signup(userData);
 
-      res.status(201).json({
-        data: {
-          token
-        }, message: "signup"
-      });
+      res.status(201).json(token);
     } catch (error) {
       next(error);
     }
@@ -26,11 +22,7 @@ export class AuthController {
       const userData: User = req.body;
       const token = await this.auth.login(userData);
 
-      res.status(200).json({
-        data: {
-          token
-        }, message: "login"
-      });
+      res.status(200).json(token);
     } catch (error) {
       next(error);
     }

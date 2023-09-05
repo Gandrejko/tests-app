@@ -10,7 +10,7 @@ export class TestController {
     try {
       const tests: Test[] = await this.test.getAllTests();
 
-      res.status(200).json({ data: tests, message: 'getAll' });
+      res.status(200).json(tests);
     } catch (error) {
       next(error);
     }
@@ -21,7 +21,7 @@ export class TestController {
       const testId: string = req.params.id;
       const test: Test = await this.test.getTestById(testId);
 
-      res.status(200).json({ data: test, message: 'findOne' });
+      res.status(200).json(test);
     } catch (error) {
       next(error);
     }
@@ -32,7 +32,7 @@ export class TestController {
       const testData: Test = req.body;
       const createTestData: Test = await this.test.createTest(testData);
 
-      res.status(201).json({ data: createTestData, message: 'created' });
+      res.status(201).json(createTestData);
     } catch (error) {
       next(error);
     }
@@ -44,7 +44,7 @@ export class TestController {
       const userData: Test = req.body;
       const updateUserData: Test = await this.test.updateTest(testId, userData);
 
-      res.status(200).json({ data: updateUserData, message: 'updated' });
+      res.status(200).json(updateUserData);
     } catch (error) {
       next(error);
     }
@@ -55,7 +55,7 @@ export class TestController {
       const testId: string = req.params.id;
       const deleteUserData: Test = await this.test.deleteTest(testId);
 
-      res.status(200).json({ data: deleteUserData, message: 'deleted' });
+      res.status(200).json(deleteUserData);
     } catch (error) {
       next(error);
     }
