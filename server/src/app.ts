@@ -2,6 +2,7 @@ import "reflect-metadata";
 import express from 'express';
 import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
+import cors from 'cors';
 
 export class App {
   public app: express.Application;
@@ -31,6 +32,7 @@ export class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(cors({origin: '*', credentials: true}))
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
