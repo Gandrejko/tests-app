@@ -16,7 +16,7 @@ export const MainPage: FC = () => {
     <Layout pageName="Tests" >
       <Box sx={styles.mainPage}>
         <Box sx={styles.testsList}>
-          {isSuccess && tests?.map((test) => <TestCard test={test} />)}
+          {isSuccess && tests?.map((test) => <TestCard key={test._id} test={test} />)}
         </Box>
       </Box>
     </Layout>

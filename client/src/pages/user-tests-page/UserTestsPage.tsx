@@ -18,8 +18,8 @@ export const UserTestsPage: FC = () => {
   return (
     <Layout pageName="My tests" >
       <Box sx={styles.userTests}>
-        <Button variant="contained" size="large" sx={styles.createTest} onClick={() => navigate("/create")}>Create test</Button>
-        {isSuccess && tests?.map((test) => <UserTestCard test={test} />)}
+        <Button variant="contained" size="large" sx={styles.createTest} onClick={() => navigate("/tests/create")}>Create test</Button>
+        {isSuccess && tests?.map((test) => <UserTestCard key={test._id} test={test} />)}
       </Box>
     </Layout>
   );

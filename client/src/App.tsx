@@ -1,3 +1,4 @@
+import { CreateTestPage } from "pages/create-test-page/CreateTestPage";
 import { UserTestsPage } from "pages/user-tests-page/UserTestsPage";
 import React from "react";
 import "./App.css";
@@ -17,6 +18,7 @@ function App() {
          <Route path="/login" element={<LoginPage />} />
          <Route path="/register" element={<RegisterPage />} />
          <Route path="/user-tests" element={<UserTestsPage />} />
+         <Route path="/tests/create" element={<CreateTestPage />} />
 
          <Route path="*" element={<Navigate to="/" />} />
        </Routes>

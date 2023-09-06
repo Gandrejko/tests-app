@@ -49,7 +49,9 @@ export class TestController {
   public createTest = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const testData: Test = req.body;
-      const createTestData: Test = await this.test.createTest(testData);
+      const token = req.headers.authorization?.split(' ')[1];
+      const { id }: DataStoredInToken = jwt_decode(token);
+      const createTestData: Test = await this.test.createTest({ ...testData, creatorId: id });
 
       res.status(201).json(createTestData);
     } catch (error) {

@@ -10,7 +10,7 @@ type TestCardProps = {
 
 export const TestCard: FC<TestCardProps> = ({ test }) => {
   return (
-    <Box key={test._id} sx={styles.card}>
+    <Box sx={styles.card}>
       <Box sx={styles.info}>
         <Box sx={styles.name}>{test.name}</Box>
         <Box sx={styles.description}>{test.description}</Box>
