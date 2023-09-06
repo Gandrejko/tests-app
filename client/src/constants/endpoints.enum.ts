@@ -3,4 +3,5 @@ export enum Endpoints {
   USERS = '/users',
   LOGIN = '/login',
   REGISTER = '/register',
+  USER_TESTS = '/tests/user-tests',
 }

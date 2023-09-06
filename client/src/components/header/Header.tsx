@@ -24,6 +24,11 @@ export const Header: FC<HeaderProps> = ({ pageName }) => {
 
   const open = Boolean(anchorEl);
 
+  const handleLogOut = () => {
+    navigate("/login");
+    localStorage.removeItem("token");
+  }
+
   return (
     <Box sx={styles.header}>
       <Typography component="h1" sx={styles.pageName}>
@@ -56,7 +61,7 @@ export const Header: FC<HeaderProps> = ({ pageName }) => {
               <Button sx={styles.button} onClick={() => navigate("/user-tests")}>
                 My Tests
               </Button>
-              <Button sx={styles.button} onClick={() => navigate("/login")}>
+              <Button sx={styles.button} onClick={handleLogOut}>
                 Log Out
               </Button>
             </>
