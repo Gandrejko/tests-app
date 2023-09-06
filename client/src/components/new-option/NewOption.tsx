@@ -18,9 +18,10 @@ export const NewOption: FC<NewOptionProps> = ({option, setOptions}) => {
     setOptions((prevState) => {
       const optionIndex = prevState.findIndex((optionState) => optionState.id === option.id);
       prevState[optionIndex].name = name;
+      prevState[optionIndex].isCorrect = checked;
       return prevState;
     });
-  }, [name]);
+  }, [name, checked]);
 
   return (
     <Box sx={styles.option}>

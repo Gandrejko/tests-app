@@ -18,6 +18,7 @@ export const TestPage: FC = () => {
     queryKey: ['test'],
   });
   const [selectedOptionsIds, setSelectedOptionsIds] = useState<Set<string>>(new Set());
+  const [showAnswers, setShowAnswers] = useState(false);
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -27,7 +28,9 @@ export const TestPage: FC = () => {
   const checkAnswer = () => {
     const allCorrect = test?.questions[questionIndex].options.every((option) => selectedOptionsIds.has(option._id) === option.isCorrect);
     allCorrect ? setCorrectAnswers(correctAnswers + 1) : setWrongAnswers(wrongAnswers + 1);
+    setShowAnswers(true);
     setTimeout(() => {
+      setShowAnswers(false);
       setQuestionIndex(questionIndex + 1);
     }, 2000)
   }
@@ -44,7 +47,13 @@ export const TestPage: FC = () => {
           <Typography sx={styles.question}>{test?.questions[questionIndex].name}</Typography>
           <Box sx={styles.options}>
             {test?.questions[questionIndex].options.map((option) =>
-              <OptionCard key={option._id} option={option} setSelectedOptionsIds={setSelectedOptionsIds} />
+              <OptionCard
+                key={option._id}
+                option={option}
+                setSelectedOptionsIds={setSelectedOptionsIds}
+                selectedOptionsIds={selectedOptionsIds}
+                showAnswers={showAnswers}
+              />
             )}
           </Box>
           <Button
