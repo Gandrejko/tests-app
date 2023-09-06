@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { Endpoints } from "constants/endpoints.enum";
-import { CreateTest, Test } from "types/tests";
+import { CreateTest, GetTest, Test } from "types/tests";
 
 export const getAllTests = async () => {
     const { data } = await axios.get<void, AxiosResponse<Test[]>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}`);
@@ -14,5 +14,10 @@ export const getUserTests = async () => {
 
 export const createTest = async (testData: CreateTest) => {
     const { data } = await axios.post<CreateTest, AxiosResponse<Test>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}`, testData);
+    return data;
+}
+
+export const getTestById = async (testId: string) => {
+    const { data } = await axios.get<string, AxiosResponse<GetTest>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}/${testId}`);
     return data;
 }

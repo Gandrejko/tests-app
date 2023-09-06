@@ -29,3 +29,18 @@ export type CreateTest = {
     }[];
   }[];
 }
+
+export type GetTest = {
+  _id: string;
+  name: string;
+  description: string;
+  questions: {
+    _id: string;
+    name: string;
+    options: {
+      _id: string;
+      name: string;
+      isCorrect: boolean;
+    }[];
+  }[];
+}

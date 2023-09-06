@@ -1,5 +1,5 @@
 import Textarea from "@mui/joy/Textarea";
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Box, Checkbox } from "@mui/material";
 
 import * as styles from 'components/new-option/NewOption.styles';
@@ -11,8 +11,8 @@ type NewOptionProps =  {
 }
 
 export const NewOption: FC<NewOptionProps> = ({option, setOptions}) => {
-  const [name, setName] = React.useState(option.name);
-  const [checked, setChecked] = React.useState(option.isCorrect);
+  const [name, setName] = useState(option.name);
+  const [checked, setChecked] = useState(option.isCorrect);
 
   useEffect(() => {
     setOptions((prevState) => {
