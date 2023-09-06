@@ -10,7 +10,7 @@ import * as styles from './MainPage.styles';
 export const MainPage: FC = () => {
   const { data: tests, isSuccess } = useQuery({
     queryFn: () => getAllTests(),
-    queryKey: ["tests"]
+    queryKey: ["tests"],
   });
   return (
     <Layout pageName="Tests" >

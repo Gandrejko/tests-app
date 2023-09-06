@@ -12,8 +12,8 @@ import { RegisterPage } from "pages/register-page/RegisterPage";
 const queryClient = new QueryClient();
 function App() {
   return (
-   <BrowserRouter>
-     <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
        <Routes>
          <Route path="/" element={<MainPage />} />
          <Route path="/login" element={<LoginPage />} />
@@ -24,8 +24,8 @@ function App() {
 
          <Route path="*" element={<Navigate to="/" />} />
        </Routes>
-     </QueryClientProvider>
-   </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

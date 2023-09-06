@@ -10,10 +10,7 @@ import * as styles from './UserTestsPage.styles';
 
 export const UserTestsPage: FC = () => {
   const navigate = useNavigate();
-  const {data: tests, isSuccess} = useQuery({
-    queryFn: () => getUserTests(),
-    queryKey: ['user-tests'],
-  });
+  const {data: tests, isSuccess} = useQuery(['user-tests'], getUserTests);
 
   return (
     <Layout pageName="My tests" >

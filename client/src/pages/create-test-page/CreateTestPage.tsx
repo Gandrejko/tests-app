@@ -5,16 +5,17 @@ import { Layout } from "components/layout/Layout";
 import { defaultQuestion } from "constants/default-values";
 import { FC, FormEventHandler, MouseEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Textarea from '@mui/joy/Textarea';
+import { Textarea } from '@mui/joy';
 
 import * as styles from './CreateTestPage.styles';
 import { NewQuestion } from "components/new-question/NewQuestion";
 import { CreateTest, Question } from "types/tests";
 import { v4 } from "uuid";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 export const CreateTestPage: FC = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -22,6 +23,9 @@ export const CreateTestPage: FC = () => {
 
   const {mutate} = useMutation({
     mutationFn: createTest,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user-tests'] });
+    }
   })
 
   const handleAddQuestion = () => {

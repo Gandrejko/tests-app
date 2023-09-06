@@ -21,3 +21,8 @@ export const getTestById = async (testId: string) => {
     const { data } = await axios.get<string, AxiosResponse<GetTest>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}/${testId}`);
     return data;
 }
+
+export const deleteTest = async (testId: string) => {
+    const { data } = await axios.delete<string, AxiosResponse<GetTest>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}/${testId}`);
+    return data;
+}

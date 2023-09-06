@@ -8,7 +8,7 @@ import { Layout } from "components/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as styles from 'pages/test-page/TestPage.styles';
-import { ModalClose, ModalDialog, Modal, Textarea } from "@mui/joy";
+import { ModalDialog, Modal, Textarea } from "@mui/joy";
 
 export const TestPage: FC = () => {
   const navigate = useNavigate();
