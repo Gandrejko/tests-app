@@ -38,3 +38,12 @@ export const options: SxProps = {
 export const nextQuestionBtn: SxProps = {
 
 };
+
+export const modal: SxProps = {
+  border: '2px solid #000',
+  padding: "20px"
+};
+
+export const closeModalButton: SxProps = {
+  marginTop: "20px"
+};
