@@ -1,7 +1,6 @@
-import { SECRET_KEY } from "@config";
-import { Test } from "@interfaces/tests.interface";
+import { Test } from "@models/tests.model";
 import { TestService } from "@services/tests.service";
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 import { Container } from "typedi";
 import jwt_decode from "jwt-decode";
 
@@ -9,6 +8,7 @@ export interface DataStoredInToken {
   id: string;
   username: string;
 }
+
 export class TestController {
   public test = Container.get(TestService);
 

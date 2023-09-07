@@ -1,6 +1,5 @@
-import { HttpException } from "@exceptions/HttpExeption";
-import { Test } from "@interfaces/tests.interface";
-import { TestModel } from "@models/tests.model";
+import { HttpException } from "@exceptions/HttpException";
+import { Test, TestModel } from "@models/tests.model";
 import { Service } from "typedi";
 
 @Service()

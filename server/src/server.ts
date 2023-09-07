@@ -3,8 +3,13 @@ import { DB_URL, PORT } from "@config";
 import { AuthRoute } from '@routes/auth.route';
 import { TestRoute } from "@routes/tests.route";
 import cors from "cors";
-import express from "express";
+import express, { Router } from "express";
 import { connect, ConnectOptions } from "mongoose";
+
+export interface Routes {
+  path?: string;
+  router: Router;
+}
 
 const app = express();
 

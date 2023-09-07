@@ -1,5 +1,21 @@
-import { Test } from "@interfaces/tests.interface";
 import { model, Schema } from 'mongoose';
+
+export interface Option {
+  name: string;
+  isCorrect: boolean;
+}
+
+export interface Question {
+  name: string;
+  options: Option[];
+}
+
+export interface Test {
+  name: string;
+  description: string;
+  questions: Question[];
+  creatorId: string;
+}
 
 const TestSchema: Schema = new Schema({
   creatorId: {

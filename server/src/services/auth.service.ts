@@ -1,7 +1,6 @@
-import { HttpException } from "@exceptions/HttpExeption";
+import { HttpException } from "@exceptions/HttpException";
 import { SECRET_KEY } from "@config";
-import { User } from "@interfaces/users.interface";
-import { UserModel } from "@models/users.model";
+import { User, UserModel } from "@models/users.model";
 import { compare, hash } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { Service } from "typedi";

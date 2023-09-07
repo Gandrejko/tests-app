@@ -1,4 +1,4 @@
-import { User } from "@interfaces/users.interface";
+import { User } from "@models/users.model";
 import { AuthService } from "@services/auth.service";
 import { NextFunction, Request, Response } from "express";
 import { Container } from "typedi";
