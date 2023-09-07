@@ -19,7 +19,7 @@ Tests app is a user-friendly testing application that allows you to effortlessly
 1. Clone this repository to your local machine.
 
 - **Backend:**
-1. 1. Choose the `server` folder as your working directory.
+1. Choose the `server` folder as your working directory.
 2. Install all necessary dependencies using the command `npm install`.
 3. Create a `.env` file in the `server` folder, copy the contents of the `.env.example` file, and fill in the required values.
 4. Start the backend server using the command `npm run dev` in the `server` folder.
