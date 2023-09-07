@@ -2,8 +2,8 @@ import { OptionCard } from "components/option-card/OptionCard";
 import { UserTestCard } from "components/user-test-card/UserTestCard";
 import React, { FC, useState } from 'react';
 import { Box, Button, Checkbox, Typography } from "@mui/material";
-import { useQuery } from "react-query";
-import { getTestById, getUserTests } from "api/tests-api";
+import { useMutation, useQuery } from "react-query";
+import { createTestResult, getTestById, getUserTests } from "api/tests-api";
 import { Layout } from "components/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -25,6 +25,10 @@ export const TestPage: FC = () => {
       }
     }
   });
+  const {mutate} = useMutation({
+    mutationFn: createTestResult,
+    mutationKey: ['test-result']
+  });
   const [selectedOptionsIds, setSelectedOptionsIds] = useState<Set<string>>(new Set());
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -39,6 +43,7 @@ export const TestPage: FC = () => {
     setTimeout(() => {
       if (questionIndex === questionsCount - 1) {
         setIsTestEnded(true);
+        mutate({testId: testId || '', result: +((correctAnswers / questionsCount) * 100).toFixed(0)});
         return;
       }
       setShowAnswers(false);
@@ -87,7 +92,7 @@ export const TestPage: FC = () => {
           <Typography id="modal-modal-description">
             <Typography>Correct answers: {correctAnswers}</Typography>
             <Typography>Wrong answers: {wrongAnswers}</Typography>
-            <Typography>Result: {(correctAnswers / questionsCount).toFixed(0)}%</Typography>
+            <Typography>Result: {((correctAnswers / questionsCount) * 100).toFixed(0)}%</Typography>
           </Typography>
           <Button variant="contained" onClick={() => navigate("/")} sx={styles.closeModalButton}>Go to main page</Button>
         </ModalDialog>

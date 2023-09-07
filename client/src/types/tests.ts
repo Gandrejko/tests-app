@@ -29,3 +29,8 @@ export type CreateTest = {
     }[];
   }[];
 }
+
+export type CreateTestResult = {
+  testId: string;
+  result: number;
+}
