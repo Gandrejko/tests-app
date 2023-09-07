@@ -25,6 +25,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
+  "engines" : {
+    "npm" : ">=9.0.0",
+    "node" : ">=18.0.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
