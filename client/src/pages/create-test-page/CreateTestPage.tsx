@@ -1,4 +1,5 @@
 import { createTest } from "api/tests-api";
+import { Layout } from "components/layout/Layout";
 import { TestController } from "components/test-controller/TestController";
 import { FC } from "react";
 import { useMutation, useQueryClient } from "react-query";
@@ -31,6 +32,8 @@ export const CreateTestPage: FC = () => {
   }
 
   return (
-    <TestController handleSubmit={handleSubmit} />
+    <Layout pageName="Create test">
+      <TestController handleSubmit={handleSubmit} />
+    </Layout>
   );
 };

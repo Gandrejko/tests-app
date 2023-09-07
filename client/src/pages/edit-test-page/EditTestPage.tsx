@@ -1,4 +1,5 @@
 import { createTest, getTestById } from "api/tests-api";
+import { Layout } from "components/layout/Layout";
 import { TestController } from "components/test-controller/TestController";
 import { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -37,6 +38,8 @@ export const EditTestPage: FC = () => {
   }
 
   return (
-    <TestController test={test} handleSubmit={handleSubmit} />
+    <Layout pageName="Edit test">
+      <TestController test={test} handleSubmit={handleSubmit} />
+    </Layout>
   );
 };
