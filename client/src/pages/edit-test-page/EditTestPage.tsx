@@ -12,12 +12,28 @@ export const EditTestPage: FC = () => {
   const {testId} = useParams();
   const queryClient = useQueryClient();
 
-  const {data: test} = useQuery(['test'], () => getTestById(testId || ''));
+  const {data: test} = useQuery(
+    ['test'],
+    () => getTestById(testId || ''),
+    {
+      onError: (error: any) => {
+        if(error.response.status === 401) {
+          localStorage.removeItem("token");
+          navigate("/login");
+      }
+    }
+  });
 
   const {mutate} = useMutation({
     mutationFn: createTest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-tests'] });
+    },
+    onError: (error: any) => {
+      if(error.response.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
     }
   });
 

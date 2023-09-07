@@ -24,10 +24,6 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    if(error.response.status === 401) {
-      localStorage.removeItem("token");
-      window.location.href = '/login';
-    }
     return Promise.reject(error);
   }
 );

@@ -18,6 +18,12 @@ export const TestPage: FC = () => {
   const {data: test} = useQuery({
     queryFn: () => getTestById(testId || ''),
     queryKey: ['test'],
+    onError: (error: any) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
   });
   const [selectedOptionsIds, setSelectedOptionsIds] = useState<Set<string>>(new Set());
 

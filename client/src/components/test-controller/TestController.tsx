@@ -27,42 +27,44 @@ export const TestController: FC<TestControllerProps> = ({ test, handleSubmit }) 
   };
 
   return (
-    <Box sx={styles.test}>
-      <Box sx={styles.info}>
-        <Box sx={styles.row}>
-          <AppInput
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Test name..."
-            required
+    <form onSubmit={() => handleSubmit({ name, description, questions })}>
+      <Box sx={styles.test}>
+        <Box sx={styles.info}>
+          <Box sx={styles.row}>
+            <AppInput
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Test name..."
+              required
+            />
+            <Button
+              variant="contained"
+              sx={styles.submitBtn}
+              type="submit"
+            >Create test</Button>
+          </Box>
+          <Textarea
+            placeholder="Description..."
+            minRows="2"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
-          <Button
-            variant="contained"
-            sx={styles.submitBtn}
-            onClick={() => handleSubmit({ name, description, questions })}
-          >Create test</Button>
         </Box>
-        <Textarea
-          placeholder="Description..."
-          minRows="2"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <Box sx={styles.questions}>
+          {questions.map((question: Question) => (
+            <NewQuestion
+              key={question._id}
+              question={question}
+              setQuestions={setQuestions}
+            />
+          ))}
+        </Box>
+        <Button
+          variant="contained"
+          sx={styles.addQuestion}
+          onClick={handleAddQuestion}
+        >Add question</Button>
       </Box>
-      <Box sx={styles.questions}>
-        {questions.map((question: Question) => (
-          <NewQuestion
-            key={question._id}
-            question={question}
-            setQuestions={setQuestions}
-          />
-        ))}
-      </Box>
-      <Button
-        variant="contained"
-        sx={styles.addQuestion}
-        onClick={handleAddQuestion}
-      >Add question</Button>
-    </Box>
+    </form>
   );
 };

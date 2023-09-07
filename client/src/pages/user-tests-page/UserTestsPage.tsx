@@ -10,7 +10,16 @@ import * as styles from './UserTestsPage.styles';
 
 export const UserTestsPage: FC = () => {
   const navigate = useNavigate();
-  const {data: tests, isSuccess} = useQuery(['user-tests'], getUserTests);
+  const {data: tests, isSuccess} = useQuery(
+    ['user-tests'],
+    getUserTests, {
+    onError: (error: any) => {
+      if (error.response.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
+  });
 
   return (
     <Layout pageName="My tests" >

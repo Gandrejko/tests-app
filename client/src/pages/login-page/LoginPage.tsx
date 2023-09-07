@@ -17,7 +17,7 @@ export const LoginPage: FC = () => {
     onSuccess: () => {
       navigate('/tests');
     }
-  })
+  });
 
   const handleRegisterClick = () => {
     mutate({ username, password });
