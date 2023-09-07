@@ -3,6 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { deleteTest } from "api/tests-api";
 import React, { FC, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { Test } from "types/tests";
 
 import * as styles from "./UserTestCard.styles";
@@ -12,6 +13,7 @@ type TestCardProps = {
 };
 
 export const UserTestCard: FC<TestCardProps> = ({ test }) => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [showModal, setShowModal] = useState(false);
 
@@ -25,7 +27,7 @@ export const UserTestCard: FC<TestCardProps> = ({ test }) => {
 
   const handleDelete = () => {
     mutate(test._id);
-  }
+  };
 
   return (
     <Box sx={styles.card}>
@@ -34,8 +36,17 @@ export const UserTestCard: FC<TestCardProps> = ({ test }) => {
         <Box sx={styles.description}>{test.description}</Box>
       </Box>
       <Box sx={styles.buttons}>
-        <Button variant="contained" size="small">Edit</Button>
-        <Button variant="contained" color="error" size="small" onClick={() => setShowModal(true)}>Delete</Button>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => navigate(`/tests/edit/${test._id}`)}
+        >Edit</Button>
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          onClick={() => setShowModal(true)}
+        >Delete</Button>
       </Box>
       <Modal
         open={showModal}

@@ -1,4 +1,5 @@
 import { CreateTestPage } from "pages/create-test-page/CreateTestPage";
+import { EditTestPage } from "pages/edit-test-page/EditTestPage";
 import { TestPage } from "pages/test-page/TestPage";
 import { UserTestsPage } from "pages/user-tests-page/UserTestsPage";
 import React from "react";
@@ -20,6 +21,7 @@ function App() {
          <Route path="/register" element={<RegisterPage />} />
          <Route path="/user-tests" element={<UserTestsPage />} />
          <Route path="/tests/create" element={<CreateTestPage />} />
+         <Route path="/tests/edit/:testId" element={<EditTestPage />} />
          <Route path="/test/:testId" element={<TestPage />} />
 
          <Route path="*" element={<Navigate to="/" />} />

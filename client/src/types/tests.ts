@@ -1,11 +1,11 @@
 export type Option = {
-  id: string;
+  _id: string;
   name: string;
   isCorrect: boolean;
 }
 
 export type Question = {
-  id: string;
+  _id: string;
   name: string;
   options: Option[];
 }
@@ -24,21 +24,6 @@ export type CreateTest = {
   questions: {
     name: string;
     options: {
-      name: string;
-      isCorrect: boolean;
-    }[];
-  }[];
-}
-
-export type GetTest = {
-  _id: string;
-  name: string;
-  description: string;
-  questions: {
-    _id: string;
-    name: string;
-    options: {
-      _id: string;
       name: string;
       isCorrect: boolean;
     }[];

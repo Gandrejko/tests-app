@@ -16,7 +16,7 @@ export const NewOption: FC<NewOptionProps> = ({option, setOptions}) => {
 
   useEffect(() => {
     setOptions((prevState) => {
-      const optionIndex = prevState.findIndex((optionState) => optionState.id === option.id);
+      const optionIndex = prevState.findIndex((optionState) => optionState._id === option._id);
       prevState[optionIndex].name = name;
       prevState[optionIndex].isCorrect = checked;
       return prevState;

@@ -1,10 +1,11 @@
 import { SxProps } from "@mui/material/styles";
 
-export const createTest: SxProps = {
-  width: "100%"
+export const test: SxProps = {
+  width: "100%",
+  marginBottom: "40px"
 };
 
-export const createTestButton: SxProps = {
+export const submitBtn: SxProps = {
   height: "50px"
 };
 

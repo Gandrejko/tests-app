@@ -1,13 +1,13 @@
 import { Option, Question } from "types/tests";
 
 export const defaultQuestion: Question = {
-  id: '',
+  _id: '',
   name: '',
   options: []
 };
 
 export const defaultOption: Option = {
-  id: '',
+  _id: '',
   name: '',
   isCorrect: false
 };

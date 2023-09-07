@@ -1,14 +1,12 @@
-import Textarea from "@mui/joy/Textarea";
-import React, { FC, useEffect, useState } from "react";
-import { Box, Checkbox, Typography } from "@mui/material";
-import { optionName } from "./OptionCard.styles";
+import React, { FC, useState } from "react";
+import { Box, Typography } from "@mui/material";
 
 import * as styles from './OptionCard.styles'
-import { GetTest, type Option, type Question } from "types/tests";
+import { Option } from "types/tests";
 import { green, red } from "@mui/material/colors";
 
 type OptionCardProps =  {
-  option: GetTest['questions'][0]['options'][0];
+  option: Option;
   setSelectedOptionsIds: React.Dispatch<React.SetStateAction<Set<string>>>;
   selectedOptionsIds: Set<string>;
   showAnswers: boolean;

@@ -1,18 +1,24 @@
-import { createTest } from "api/tests-api";
+import { createTest, getTestById } from "api/tests-api";
 import { TestController } from "components/test-controller/TestController";
 import { FC } from "react";
-import { useMutation, useQueryClient } from "react-query";
-import { Test } from "types/tests";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const CreateTestPage: FC = () => {
+import { Test } from "types/tests";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+
+export const EditTestPage: FC = () => {
+  const navigate = useNavigate();
+  const {testId} = useParams();
   const queryClient = useQueryClient();
+
+  const {data: test} = useQuery(['test'], () => getTestById(testId || ''));
 
   const {mutate} = useMutation({
     mutationFn: createTest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-tests'] });
     }
-  })
+  });
 
   const handleSubmit = ({ name, description, questions }: Omit<Test, "creatorId" | "_id">) => {
     const testData = {
@@ -31,6 +37,6 @@ export const CreateTestPage: FC = () => {
   }
 
   return (
-    <TestController handleSubmit={handleSubmit} />
+    <TestController test={test} handleSubmit={handleSubmit} />
   );
 };

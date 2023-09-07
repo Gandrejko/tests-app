@@ -19,7 +19,7 @@ export const NewQuestion: FC<NewQuestionProps> = ({question, setQuestions}) => {
 
   useEffect(() => {
     setQuestions((prevState) => {
-      const questionIndex = prevState.findIndex((questionState) => questionState.id === question.id);
+      const questionIndex = prevState.findIndex((questionState) => questionState._id === question._id);
       prevState[questionIndex].name = name;
       prevState[questionIndex].options = options;
       return prevState;
@@ -27,7 +27,7 @@ export const NewQuestion: FC<NewQuestionProps> = ({question, setQuestions}) => {
   }, [name, options]);
 
   const handleAddOption = () => {
-    setOptions((prevState) => [...prevState, { ...defaultOption, id: v4() }]);
+    setOptions((prevState) => [...prevState, { ...defaultOption, _id: v4() }]);
   };
 
   return (
@@ -39,7 +39,7 @@ export const NewQuestion: FC<NewQuestionProps> = ({question, setQuestions}) => {
         required
       />
       <Box sx={styles.options}>
-        {options.map((option, index) => <NewOption key={option.id} option={option} setOptions={setOptions} />)}
+        {options.map((option, index) => <NewOption key={option._id} option={option} setOptions={setOptions} />)}
       </Box>
       <Button
         variant="contained"
