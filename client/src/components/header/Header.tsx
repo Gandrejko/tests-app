@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Box, Button, IconButton, Popover, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 
 import * as styles from "./Header.styles";
@@ -11,7 +11,7 @@ type HeaderProps = {
 
 export const Header: FC<HeaderProps> = ({ pageName }) => {
   const navigate = useNavigate();
-  const isLogin = true;
+  const isLogin = !!localStorage.getItem("token");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleIconClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -56,6 +56,9 @@ export const Header: FC<HeaderProps> = ({ pageName }) => {
         }}
       >
         <Box sx={styles.buttons}>
+          <Button sx={styles.button} onClick={() => navigate("/")}>
+            All Tests
+          </Button>
           {isLogin ? (
             <>
               <Button sx={styles.button} onClick={() => navigate("/user-tests")}>

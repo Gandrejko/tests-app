@@ -19,6 +19,5 @@ export const buttons: SxProps = {
 };
 
 export const button: SxProps = {
-  px: "5px",
-  py: "5px"
+  margin: "3px 6px",
 };
