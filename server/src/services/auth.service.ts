@@ -10,13 +10,15 @@ const createToken = (user: User): string => {
   const dataStoredInToken = { id: user._id, username: user.username };
 
   return sign(dataStoredInToken, SECRET_KEY, { expiresIn: "24h" });
-}
+};
 
 @Service()
 export class AuthService {
   public async signup(userData: User): Promise<{user: User, token: string}> {
     const findUser: User = await UserModel.findOne({ username: userData.username });
-    if (findUser) throw new HttpException(409, `User with username ${userData.username} already exists`);
+    if (findUser) {
+      throw new HttpException(409, `User with username ${userData.username} already exists`);
+    }
 
     const hashedPassword = await hash(userData.password, 10);
     const createUserData = await UserModel.create({ ...userData, password: hashedPassword });
@@ -25,10 +27,14 @@ export class AuthService {
 
   public async login(userData: User): Promise<{user: User, token: string}> {
     const findUser: User = await UserModel.findOne({ username: userData.username });
-    if (!findUser) throw new HttpException(409, `User with username ${userData.username} was not found`);
+    if (!findUser) {
+      throw new HttpException(409, `User with username ${userData.username} was not found`);
+    }
 
     const isPasswordMatching: boolean = await compare(userData.password, findUser.password);
-    if (!isPasswordMatching) throw new HttpException(409, "Password is not matching");
+    if (!isPasswordMatching) {
+      throw new HttpException(409, "Password is not matching");
+    }
 
     return { user: findUser, token: createToken(findUser) };
   }
