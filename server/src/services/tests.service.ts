@@ -1,5 +1,6 @@
 import { HttpException } from "@exceptions/HttpException";
 import { Test, TestModel } from "@models/tests.model";
+import { TestsResults, TestsResultsModel } from "@models/tests-results.model";
 import { Service } from "typedi";
 
 @Service()
@@ -35,5 +36,9 @@ export class TestService {
     if (!deleteTestById) throw new HttpException(409, "Test doesn't exist");
 
     return deleteTestById;
+  }
+
+  public async createTestsResult(testData: TestsResults): Promise<TestsResults> {
+    return TestsResultsModel.create({ ...testData });
   }
 }

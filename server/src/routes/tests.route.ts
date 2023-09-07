@@ -18,6 +18,7 @@ export class TestRoute implements Routes {
     this.router.get(`${this.path}/:id`, AuthMiddleware, this.test.getTestById);
     this.router.post(`${this.path}`, AuthMiddleware, this.test.createTest);
     this.router.put(`${this.path}/:id`, AuthMiddleware, this.test.updateTest);
-    this.router.delete(`${this.path}/:id`,AuthMiddleware, this.test.deleteTest);
+    this.router.delete(`${this.path}/:id`, AuthMiddleware, this.test.deleteTest);
+    this.router.post(`${this.path}/results`, AuthMiddleware, this.test.createTestsResult);
   }
 }
