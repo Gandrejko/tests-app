@@ -1,7 +1,7 @@
 import { TestController } from "@controllers/tests.controller";
 import { Router } from 'express';
 import { Routes } from '@interfaces/routes.interface';
-import { AuthMiddleware } from "middlewares/auth.middleware";
+import { AuthMiddleware } from "@middlewares/auth.middleware";
 
 export class TestRoute implements Routes {
   public path = '/tests';

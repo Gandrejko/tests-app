@@ -1,7 +1,7 @@
 import { SECRET_KEY } from "@config";
 import { UserModel } from "@models/users.model";
 import { DataStoredInToken } from "@services/auth.service";
-import { HttpException } from "exeptions/HttpExeption";
+import { HttpException } from "@exceptions/HttpExeption";
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 

@@ -1,4 +1,4 @@
-import { HttpException } from "@/exeptions/HttpExeption";
+import { HttpException } from "@exceptions/HttpExeption";
 import { SECRET_KEY } from "@config";
 import { User } from "@interfaces/users.interface";
 import { UserModel } from "@models/users.model";
