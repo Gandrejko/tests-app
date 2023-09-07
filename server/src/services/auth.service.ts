@@ -5,7 +5,10 @@ import { UserModel } from "@models/users.model";
 import { compare, hash } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { Service } from "typedi";
-
+export interface DataStoredInToken {
+  id: string;
+  username: string;
+}
 const createToken = (user: User): string => {
   const dataStoredInToken = { id: user._id, username: user.username };
 
