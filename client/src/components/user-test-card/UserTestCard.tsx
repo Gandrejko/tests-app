@@ -30,9 +30,9 @@ export const UserTestCard: FC<TestCardProps> = ({ test }) => {
   };
 
   return (
-    <Box sx={styles.card} onClick={() => navigate(`/test-info/${test._id}`)}>
+    <Box sx={styles.card} >
       <Box sx={styles.info}>
-        <Box sx={styles.name}>{test.name}</Box>
+        <Box sx={styles.name} onClick={() => navigate(`/test-info/${test._id}`)}>{test.name}</Box>
         <Box sx={styles.description}>{test.description}</Box>
       </Box>
       <Box sx={styles.buttons}>

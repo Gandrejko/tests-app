@@ -1,14 +1,13 @@
 import { OptionCard } from "components/option-card/OptionCard";
-import { UserTestCard } from "components/user-test-card/UserTestCard";
 import React, { FC, useState } from 'react';
 import { Box, Button, Checkbox, Typography } from "@mui/material";
-import { useMutation, useQuery } from "react-query";
-import { createTestResult, getTestById, getUserTests } from "api/tests-api";
+import { useQuery } from "react-query";
+import { getTestById } from "api/tests-api";
 import { Layout } from "components/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as styles from 'pages/test-page/TestPage.styles';
-import { ModalDialog, Modal, Textarea } from "@mui/joy";
+import { ModalDialog, Modal } from "@mui/joy";
 
 export const TestPage: FC = () => {
   const navigate = useNavigate();
@@ -25,10 +24,6 @@ export const TestPage: FC = () => {
       }
     }
   });
-  const {mutate} = useMutation({
-    mutationFn: createTestResult,
-    mutationKey: ['test-result']
-  });
   const [selectedOptionsIds, setSelectedOptionsIds] = useState<Set<string>>(new Set());
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -43,7 +38,6 @@ export const TestPage: FC = () => {
     setTimeout(() => {
       if (questionIndex === questionsCount - 1) {
         setIsTestEnded(true);
-        mutate({testId: testId || '', result: +((correctAnswers / questionsCount) * 100).toFixed(0)});
         return;
       }
       setShowAnswers(false);

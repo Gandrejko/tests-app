@@ -1,5 +1,4 @@
 import { Test } from "@models/tests.model";
-import { TestsResults } from "@models/tests-results.model";
 import { TestService } from "@services/tests.service";
 import { NextFunction, Request, Response } from "express";
 import { Container } from "typedi";
@@ -78,19 +77,6 @@ export class TestController {
       const deleteUserData: Test = await this.test.deleteTest(testId);
 
       res.status(200).json(deleteUserData);
-    } catch (error) {
-      next(error);
-    }
-  };
-
-  public createTestsResult = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const usersTestsResultsData: {testId: string, result: number} = req.body;
-      const token = req.headers.authorization?.split(' ')[1];
-      const { id }: DataStoredInToken = jwt_decode(token);
-      const createUsersTestsResultData = await this.test.createTestsResult({ ...usersTestsResultsData, userId: id });
-
-      res.status(200).json(createUsersTestsResultData);
     } catch (error) {
       next(error);
     }

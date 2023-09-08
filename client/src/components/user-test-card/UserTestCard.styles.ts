@@ -9,7 +9,6 @@ export const card: SxProps = {
   gap: "40px",
   border: "2px solid #000",
   borderRadius: "5px",
-  cursor: "pointer",
 };
 
 export const info: SxProps = {
@@ -18,6 +17,7 @@ export const info: SxProps = {
 };
 
 export const name: SxProps = {
+  cursor: "pointer",
 };
 
 export const description: SxProps = {

@@ -31,8 +31,3 @@ export const deleteTest = async (testId: string) => {
   const { data } = await axios.delete<string, AxiosResponse<Test>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS}/${testId}`);
   return data;
 };
-
-export const createTestResult = async (testData: CreateTestResult) => {
-  const { data } = await axios.post<string, AxiosResponse<Test>>(`${process.env.REACT_APP_API_URL}${Endpoints.TESTS_RESULTS}`, testData);
-  return data;
-};
