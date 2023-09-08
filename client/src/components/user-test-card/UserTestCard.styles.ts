@@ -8,7 +8,8 @@ export const card: SxProps = {
   justifyContent: "space-between",
   gap: "40px",
   border: "2px solid #000",
-  borderRadius: "5px"
+  borderRadius: "5px",
+  cursor: "pointer",
 };
 
 export const info: SxProps = {
