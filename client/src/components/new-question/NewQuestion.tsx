@@ -30,6 +30,10 @@ export const NewQuestion: FC<NewQuestionProps> = ({question, setQuestions}) => {
     setOptions((prevState) => [...prevState, { ...defaultOption, _id: v4() }]);
   };
 
+  const handleDeleteQuestion = () => {
+    setQuestions((prevState) => prevState.filter((questionState) => questionState._id !== question._id));
+  };
+
   return (
     <Box sx={styles.question}>
       <Textarea
@@ -41,12 +45,20 @@ export const NewQuestion: FC<NewQuestionProps> = ({question, setQuestions}) => {
       <Box sx={styles.options}>
         {options.map((option, index) => <NewOption key={option._id} option={option} setOptions={setOptions} />)}
       </Box>
-      <Button
-        variant="contained"
-        sx={styles.addOption}
-        onClick={handleAddOption}
-        size="small"
-      >Add option</Button>
+      <Box sx={styles.buttons}>
+        <Button
+          variant="contained"
+          sx={styles.addOption}
+          onClick={handleAddOption}
+          size="small"
+        >Add option</Button>
+        <Button
+          variant="contained"
+          sx={styles.deleteQuestion}
+          onClick={handleDeleteQuestion}
+          size="small"
+        >Delete question</Button>
+      </Box>
     </Box>
   );
 };

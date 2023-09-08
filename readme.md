@@ -1,7 +1,3 @@
-## Overview
-
-Tests app is a user-friendly testing application that allows you to effortlessly create, edit, and take tests. Designed for a diverse audience, from students to knowledge enthusiasts, this platform provides a seamless experience for learning and assessing your expertise. The backend, powered by Express.js and MongoDB, ensures reliability, while the frontend, built with Create React App and enriched with MaterialUI, offers a modern and visually appealing interface.
-
 ## Key Features
 
 - **Test Creation:** Ability to create new tests and configure their parameters.

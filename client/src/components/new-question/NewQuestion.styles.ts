@@ -1,3 +1,4 @@
+import { red } from "@mui/material/colors";
 import { SxProps } from "@mui/material/styles";
 
 export const question: SxProps = {
@@ -13,6 +14,19 @@ export const options: SxProps = {
   gap: "10px"
 };
 
-export const addOption: SxProps = {
+export const buttons: SxProps = {
   marginTop: '20px',
+  display: 'flex',
+  justifyContent: 'space-between',
+};
+
+export const addOption: SxProps = {
+
+};
+
+export const deleteQuestion: SxProps = {
+  bgcolor: red[600],
+  '&:hover': {
+    bgcolor: red[800],
+  }
 };

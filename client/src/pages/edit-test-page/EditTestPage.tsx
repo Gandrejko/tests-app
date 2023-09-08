@@ -1,4 +1,4 @@
-import { createTest, getTestById } from "api/tests-api";
+import { getTestById, updateTest } from "api/tests-api";
 import { Layout } from "components/layout/Layout";
 import { TestController } from "components/test-controller/TestController";
 import { FC } from "react";
@@ -13,8 +13,8 @@ export const EditTestPage: FC = () => {
   const queryClient = useQueryClient();
 
   const {data: test} = useQuery(
-    ['test'],
-    () => getTestById(testId || ''),
+    [testId],
+    () => getTestById(testId || ""),
     {
       onError: (error: any) => {
         if(error.response.status === 401) {
@@ -25,16 +25,10 @@ export const EditTestPage: FC = () => {
   });
 
   const {mutate} = useMutation({
-    mutationFn: createTest,
+    mutationFn: updateTest,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['user-tests'] });
       navigate("/user-tests");
-    },
-    onError: (error: any) => {
-      if(error.response.status === 401) {
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
+      queryClient.invalidateQueries({ queryKey: ['user-tests'] });
     }
   });
 
@@ -50,13 +44,15 @@ export const EditTestPage: FC = () => {
         });
         return { ...rest, options: newOptions };
       })
+    };
+    if(testId) {
+      mutate({ testData, testId });
     }
-    mutate(testData);
-  }
+  };
 
   return (
     <Layout pageName="Edit test">
-      <TestController test={test} handleSubmit={handleSubmit} />
+      {test && <TestController test={test} handleSubmit={handleSubmit} />}
     </Layout>
   );
 };
