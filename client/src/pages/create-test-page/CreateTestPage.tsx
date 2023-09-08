@@ -14,6 +14,7 @@ export const CreateTestPage: FC = () => {
     mutationFn: createTest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-tests'] });
+      navigate("/user-tests");
     },
     onError: (error: any) => {
       if(error.response.status === 401) {

@@ -9,11 +9,13 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { LoginPage } from "pages/login-page/LoginPage";
 import { MainPage } from "pages/main-page/MainPage";
 import { RegisterPage } from "pages/register-page/RegisterPage";
+import { ToastContainer } from "react-toastify";
 
 const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ToastContainer />
       <BrowserRouter>
        <Routes>
          <Route path="/" element={<MainPage />} />
